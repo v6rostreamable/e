@@ -1,0 +1,41 @@
+-- this was made by v6ro and prime, s/o to prime for helping me with it  
+-- uu#9595
+
+--
+--██╗░░░██╗░█████╗░██████╗░░█████╗░██████╗░██╗░░░██╗███╗░░██╗░██████╗██████╗░██╗░░██╗
+--██║░░░██║██╔═══╝░██╔══██╗██╔══██╗██╔══██╗██║░░░██║████╗░██║██╔════╝██╔══██╗██║░░██║
+--╚██╗░██╔╝██████╗░██████╔╝██║░░██║██████╔╝██║░░░██║██╔██╗██║╚█████╗░██║░░██║███████║
+--░╚████╔╝░██╔══██╗██╔══██╗██║░░██║██╔══██╗██║░░░██║██║╚████║░╚═══██╗██║░░██║██╔══██║
+--░░╚██╔╝░░╚█████╔╝██║░░██║╚█████╔╝██║░░██║╚██████╔╝██║░╚███║██████╔╝██████╔╝██║░░██║
+--░░░╚═╝░░░░╚════╝░╚═╝░░╚═╝░╚════╝░╚═╝░░╚═╝░╚═════╝░╚═╝░░╚══╝╚═════╝░╚═════╝░╚═╝░░╚═╝
+loadstring(game:HttpGet("https://raw.githubusercontent.com/strongprime/source/main/source", true))()
+
+DaHoodSettings.Prediction = 0.1437
+
+getgenv().Aiming.TargetPart = {"Head", "HumanoidRootPart", "LowerTorso", "RightFoot", "LeftFoot"}
+
+getgenv().Aiming.HitChance = 110
+
+getgenv().Aiming.ShowFOV = false
+
+getgenv().Aiming.FOV = 10.4
+-- dont remove this if you want to be legit and not get exposed
+-- // aiming version!
+local CPlayer = Aiming.Selected
+local hrp = CPlayer.Character.HumanoidRootPart
+                hrp.Velocity = Vector3.new(hrp.Velocity.X, 0, hrp.Velocity.Y, hrp.Velocity.Z)    
+                hrp.AssemblyLinearVelocity = Vector3.new(hrp.Velocity.X, 0, hrp.Velocity.Y, hrp.Velocity.Z)
+-- extra anti lock
+local RunService = game:GetService("RunService")
+
+RunService.Heartbeat:Connect(function()
+    pcall(function()
+        for i,v in pairs(game.Players:GetChildren()) do
+            if v.Name ~= game.Players.LocalPlayer.Name then
+                local hrp = v.Character.HumanoidRootPart
+                hrp.Velocity = Vector3.new(hrp.Velocity.X, 0, hrp.Velocity.Z)    
+                hrp.AssemblyLinearVelocity = Vector3.new(hrp.Velocity.X, 0, hrp.Velocity.Z)   
+            end
+        end
+    end)
+end)
